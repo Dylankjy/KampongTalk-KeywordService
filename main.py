@@ -1,4 +1,5 @@
 from flask import *
+import base64
 
 # pip install -U spacy
 # python -m spacy download en_core_web_sm
@@ -11,10 +12,12 @@ app = Flask(__name__)
 def root():
     text = request.args.get('user')
     if text:
-        return process_text(text)
+        return process_text(base64.b64decode(text))
 
     return {
-        "status": 400
+        "status": 400,
+        "readable_status": "Couldn't process request as request does not contain enough parameters or parameters are "
+                           "invalid."
     }
 
 
@@ -34,9 +37,11 @@ def process_text(text):
 
     return {
         "status": 200,
+        "readable_status": "Request succeeded.",
         "nouns": [token.lemma_ for token in doc if token.pos_ == "NOUN"],
         "verbs": [token.lemma_ for token in doc if token.pos_ == "VERB"]
     }
+
 
 if __name__ == '__main__':
     app.run()
