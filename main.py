@@ -7,9 +7,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    text = request.args.get('user')
-    if text:
-        return process_text(base64.b64decode(text))
+    text_base64 = request.args.get('text')
+    text_decoded = str(base64.b64decode(text_base64))
+
+    if text_decoded:
+        return process_text(text_decoded)
 
     return {
         "status": 400,
