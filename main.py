@@ -1,3 +1,5 @@
+import datetime
+
 from flask import *
 import base64
 import spacy
@@ -7,18 +9,20 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    text_base64 = request.args.get('text')
-    text_decoded = str(base64.b64decode(text_base64))
+    try:
+        text_base64 = request.args.get('text')
+        text_decoded = str(base64.b64decode(text_base64))
 
-    if text_decoded:
-        return process_text(text_decoded)
+        if text_decoded:
+            return process_text(text_decoded)
 
-    return {
-        "server": "KampongTalk Keyword API",
-        "status": 400,
-        "readable_status": "Couldn't process request as request does not contain enough parameters or parameters are "
-                           "invalid."
-    }
+    except:
+        return {
+            "server": "KampongTalk Keyword API",
+            "status": 400,
+            "readable_status": "Couldn't process request as request does not contain enough parameters or parameters "
+                               "are invalid."
+        }
 
 
 def process_text(text):
