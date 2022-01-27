@@ -1,8 +1,5 @@
 from flask import *
 import base64
-
-# pip install -U spacy
-# python -m spacy download en_core_web_sm
 import spacy
 
 app = Flask(__name__)
