@@ -19,7 +19,6 @@ murmurhash==1.0.6
 numpy==1.22.1
 packaging==21.3
 pathy==0.6.1
-polyglot==16.7.4
 preshed==3.0.6
 pydantic==1.8.2
 pyparsing==3.0.7
