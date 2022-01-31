@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv-darwin" />
       <excludeFolder url="file://$MODULE_DIR$/venv_darwin" />
+      <excludeFolder url="file://$MODULE_DIR$/venv_win" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
