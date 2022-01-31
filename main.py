@@ -21,7 +21,8 @@ def root():
             "server": "KampongTalk Keyword API",
             "status": 400,
             "readable_status": "Couldn't process request as request does not contain enough parameters or parameters "
-                               "are invalid."
+                               "are invalid.",
+            "response_timestamp": datetime.datetime.now().timestamp(),
         }
 
 
@@ -44,7 +45,8 @@ def process_text(text):
         "status": 200,
         "readable_status": "Request succeeded.",
         "nouns": [token.lemma_ for token in doc if token.pos_ == "NOUN"],
-        "verbs": [token.lemma_ for token in doc if token.pos_ == "VERB"]
+        "verbs": [token.lemma_ for token in doc if token.pos_ == "VERB"],
+        "response_timestamp": datetime.datetime.now().timestamp(),
     }
 
 
