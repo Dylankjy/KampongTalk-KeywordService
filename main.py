@@ -42,7 +42,7 @@ def process_text(text):
     # for entity in doc.ents:
     #     print(entity.text, entity.label_)
 
-    return {
+    res = {
         "server": "KampongTalk Keyword API",
         "status": 200,
         "readable_status": "Request succeeded.",
@@ -50,6 +50,10 @@ def process_text(text):
         "verbs": [token.lemma_ for token in doc if token.pos_ == "VERB"],
         "response_timestamp": datetime.datetime.now().timestamp(),
     }
+
+    print(res)
+
+    return res
 
 
 if __name__ == '__main__':
