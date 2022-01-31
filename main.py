@@ -11,7 +11,9 @@ app = Flask(__name__)
 def root():
     try:
         text_base64 = request.args.get('text')
-        text_decoded = str(base64.b64decode(text_base64))
+
+        # Decodes base64 string and removes b' header
+        text_decoded = str(base64.b64decode(text_base64)).replace("b'", "")
 
         if text_decoded:
             return process_text(text_decoded)
