@@ -30,7 +30,7 @@ def root():
 
 def process_text(text):
     # Load English tokenizer, tagger, parser and NER
-    nlp = spacy.load("en_core_web_lg")
+    nlp = spacy.load("en_core_web_trf")
 
     doc = nlp(text)
 
