@@ -13,7 +13,7 @@ def root():
         text_base64 = request.args.get('text')
 
         # Decodes base64 string and removes b' header
-        text_decoded = str(base64.b64decode(text_base64)).replace("b'", "")
+        text_decoded = str(base64.b64decode(text_base64)).replace("b'", "").replace("b\"", "")
 
         if text_decoded:
             return process_text(text_decoded)
